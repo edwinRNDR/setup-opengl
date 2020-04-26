@@ -2,7 +2,7 @@ const core = require('@actions/core')
 const {exec} = require('@actions/exec')
 
 try {
-    await exec('pwd')
+    exec('pwd')
 
     var options = {
         env: {
@@ -10,7 +10,7 @@ try {
         }
     }
 
-    await exec(path.join(__dirname, "setup-opengl.sh"))
+    exec(path.join(__dirname, "setup-opengl.sh"))
 } catch(error) {
     core.setFailed(error.message)
 }
