@@ -1,10 +1,16 @@
 const core = require('@actions/core')
-const exec = require('@actions/exec')
+const {exec} = require('@actions/exec')
 
 try {
-    exec.exec('pwd')
-    exec.exec("ls")
-    exec.exec('bash', ['setup-opengl.sh'])
+    await exec('pwd')
+
+    var options = {
+        env: {
+            'PAYLOAD_PATH' : __dirname
+        }
+    }
+
+    await exec(path.join(__dirname, "setup-opengl.sh"))
 } catch(error) {
     core.setFailed(error.message)
 }
