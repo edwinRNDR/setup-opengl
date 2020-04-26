@@ -8,7 +8,7 @@ try {
             'PAYLOAD_PATH' : __dirname
         }
     }
-    exec(path.join(__dirname, "setup-opengl.sh"))
+    exec(path.join(__dirname, "setup-opengl.sh"), options)
 } catch(error) {
     core.setFailed(error.message)
 }
